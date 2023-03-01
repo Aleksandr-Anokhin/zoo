@@ -1,7 +1,5 @@
 package animals;
 
-import animals.Animal;
-
 public class Lion extends Animal {
 
     protected int maneVolume;
@@ -33,5 +31,12 @@ public class Lion extends Animal {
     public String getType() {
 
         return TYPE;
+    }
+
+    @Override
+    public int compareTo(Lion o) {
+        if (this.age > o.getBirthYear()) return 1;
+        else if (this.age < o.getBirthYear()) return -1;
+        return 0;
     }
 }

@@ -2,13 +2,16 @@ package cage;
 
 import animals.Animal;
 import animals.Wolf;
+import comparators.WolfAgeComparator;
+import comparators.WolfWeightComparator;
+import iterators.WolfIterator;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+import java.util.Iterator;
 
-public class WolfCage implements AnimalCage{
-    /* Вот такая ошибка:
-Class 'WolfCage' must either be declared abstract or implement abstract method 'giveFood(int)' in 'AnimalCage'
-     */
+public class WolfCage implements AnimalCage, Iterable<Wolf> {
     private ArrayList<Wolf> wolves;
     private int foodWeight;
     private int garbageWeight;
@@ -44,12 +47,14 @@ Class 'WolfCage' must either be declared abstract or implement abstract method '
 
     @Override
     public int addAnimal(Animal animal) {
-        wolves.add((Wolf) animal);
+        if(animal.getType().equals("wolf")){
+            wolves.add((Wolf) animal);
+        }
         return wolves.size();
     }
 
     @Override
-    public int deliverFood(int foodWeight) {
+    public void giveFood(int foodWeight) {
         int tmpFood = foodWeight + this.foodWeight;
         try {
             for (Animal wolf : wolves) {
@@ -80,13 +85,32 @@ Class 'WolfCage' must either be declared abstract or implement abstract method '
     }
 
     public Wolf takeOffAnimal(){
+        if(wolves == null){
             return null;
+        }
+        else {
+            Random random = new Random();
+            int i = random.nextInt(wolves.size());
+            return (Wolf) wolves.remove(i);
+        }
+    }
 
+    public void wolfWeightSort(){
+        Collections.sort(wolves, new WolfWeightComparator());
+    }
+
+    public void wolfAgeSort(){
+        Collections.sort(wolves, new WolfAgeComparator());
+    }
+
+    @Override
+    public Iterator<Wolf> iterator() {
+        return new WolfIterator(wolves);
     }
 
     @Override
     public String toString() {
-        return "LionCage{" +
+        return "WolfCage{" +
                 "foodWeight=" + foodWeight +
                 ", garbageWeight=" + garbageWeight +
                 ", wolves=" + wolves +

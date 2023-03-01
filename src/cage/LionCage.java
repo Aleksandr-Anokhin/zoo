@@ -2,18 +2,22 @@ package cage;
 
 import animals.Animal;
 import animals.Lion;
+import comparators.LionComparator;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Random;
 
 
 public class LionCage implements AnimalCage{
     private int foodWeight;
     private int garbageWeight;
-    private ArrayList<Animal> lions;
+    private ArrayList<Lion> lions;
 
-    public LionCage(ArrayList<Lion> lions) {
+    public LionCage() {
 
-        this.lions = this.lions;
+        this.lions = lions;
     }
 
     public void setLions(ArrayList lions) {
@@ -40,27 +44,39 @@ public class LionCage implements AnimalCage{
         return garbageWeight;
     }
 
-    public ArrayList<Animal> getLions() {
+    public ArrayList<Lion> getLions() {
 
         return lions;
     }
 
     @Override
     public int addAnimal(Animal animal) {
-        lions.add(animal);
+        if (animal.getType().equals("lion")) {
+            lions.add((Lion) animal);
+        }
         return lions.size();
     }
 
     @Override
     public void giveFood(int foodWeight) {
-
+        int tmpFood = foodWeight + this.foodWeight;
+        try {
+            for (Animal wolf : lions) {
+                wolf.feed(tmpFood);
+                if (tmpFood > wolf.getMaxWeight()) {
+                    tmpFood -= wolf.getMaxWeight();
+                } else {
+                    tmpFood = 0;
+                }
+            }
+            this.foodWeight = tmpFood;
+        }
+        catch (Exception e){
+            this.foodWeight = 0;
+            this.garbageWeight = tmpFood;
+        }
     }
 
-    @Override
-    public int deliverFood(int foodWeight) {
-
-        return foodWeight;
-    }
     @Override
     public void cleanCage(int garbageWeight) {
         if (garbageWeight < this.garbageWeight) {
@@ -72,7 +88,13 @@ public class LionCage implements AnimalCage{
 
     @Override
     public Animal takeOffAnimal() {
-        return null;
+        if (lions == null) {
+            return null;
+        } else {
+            Random random = new Random();
+            int i = random.nextInt(lions.size());
+            return (Lion) lions.remove(i);
+        }
     }
 
     @Override
@@ -82,5 +104,15 @@ public class LionCage implements AnimalCage{
                 ", garbageWeight=" + garbageWeight +
                 ", lions=" + lions +
                 '}';
+    }
+
+    public void sortLions() {
+        Collections.sort(lions, new LionComparator());
+    }
+    /*
+    reason: no instance(s) of type variable(s) T exist so that Lion conforms to Comparable<? super T>
+     */
+    public void sortByVolume(){
+        Collections.sort(lions, new LionComparator());
     }
 }

@@ -5,7 +5,6 @@ public interface AnimalCage {
 
     void giveFood(int foodWeight);
 
-    int deliverFood(int foodWeight);
 
     void cleanCage(int garbageWeight);
 

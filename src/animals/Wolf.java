@@ -1,7 +1,9 @@
 package animals;
 
 public class Wolf extends Animal{
-
+/*
+Class 'Wolf' must either be declared abstract or implement abstract method 'compareTo(Lion)' in 'Animal'
+ */
     protected static final int MAX_WEIGHT = 60;
     protected static final String type = "wolf";
 
@@ -20,7 +22,14 @@ public class Wolf extends Animal{
         this.height = height;
     }
 
-
+    @Override
+    public String toString() {
+        return "Wolf{" +
+                "height=" + height +
+                ", yearBirth=" + age +
+                ", weight=" + weight +
+                "}\n";
+    }
     @Override
     public String getType() {
 
