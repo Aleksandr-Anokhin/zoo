@@ -1,9 +1,6 @@
 package animals;
 
-public class Wolf extends Animal{
-/*
-Class 'Wolf' must either be declared abstract or implement abstract method 'compareTo(Lion)' in 'Animal'
- */
+public class Wolf extends Animal {
     protected static final int MAX_WEIGHT = 60;
     protected static final String type = "wolf";
 
@@ -41,4 +38,5 @@ Class 'Wolf' must either be declared abstract or implement abstract method 'comp
 
         return MAX_WEIGHT;
     }
+
 }

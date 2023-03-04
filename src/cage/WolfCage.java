@@ -2,16 +2,16 @@ package cage;
 
 import animals.Animal;
 import animals.Wolf;
-import comparators.WolfAgeComparator;
-import comparators.WolfWeightComparator;
-import iterators.WolfIterator;
+import animals.WolfAgeComparator;
+import animals.WolfWeightComparator;
+import animals.WolfIterator;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import java.util.Iterator;
 
-public class WolfCage implements AnimalCage, Iterable<Wolf> {
+public class WolfCage implements AnimalCage<Wolf>, Iterable<Wolf> {
     private ArrayList<Wolf> wolves;
     private int foodWeight;
     private int garbageWeight;
@@ -46,7 +46,7 @@ public class WolfCage implements AnimalCage, Iterable<Wolf> {
     }
 
     @Override
-    public int addAnimal(Animal animal) {
+    public int addAnimal(Wolf animal) {
         if(animal.getType().equals("wolf")){
             wolves.add((Wolf) animal);
         }

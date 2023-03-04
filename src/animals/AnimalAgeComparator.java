@@ -1,11 +1,12 @@
-package comparators;
+package animals;
 
-import animals.Wolf;
+import animals.Animal;
 
 import java.util.Comparator;
-public class WolfAgeComparator implements Comparator<Wolf> {
+
+public class AnimalAgeComparator implements Comparator<Animal> {
     @Override
-    public int compare(Wolf o1, Wolf o2) {
+    public int compare(Animal o1, Animal o2) {
         if(o1.getBirthYear() < o2.getBirthYear()){
             return 1;
         }

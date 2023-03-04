@@ -23,7 +23,7 @@ public class Snake extends Animal {
         return TYPE;
     }
 
-    public static int getBodyLength() {
+    public int getBodyLength() {
 
         return Snake.bodyLength;
     }
