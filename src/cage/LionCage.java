@@ -86,7 +86,7 @@ public class LionCage implements AnimalCage<Lion>{
     }
 
     @Override
-    public Animal takeOffAnimal() {
+    public Lion takeOffAnimal() {
         if (lions == null) {
             return null;
         } else {

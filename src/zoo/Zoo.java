@@ -40,4 +40,16 @@ public class Zoo {
     public void setSnakeTerrarium(AnimalCage<Snake> snakeTerrarium) {
         this.snakeCage = snakeTerrarium;
     }
+
+    public void takeOfLion() {
+        this.lionCage.takeOffAnimal();
+    }
+
+    public int addLion(Lion animal) {
+        if (this.lionCage == null) {
+            return 0;
+        } else {
+            return this.lionCage.addAnimal(animal);
+        }
+    }
 }
