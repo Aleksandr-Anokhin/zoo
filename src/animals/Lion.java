@@ -16,7 +16,7 @@ public class Lion extends Animal {
         this.maneVolume = maneVolume;
     }
 
-    public Lion(int age, int weight, int countLimbs, int maneVolume){
+    public Lion(String s, int age, int weight, int countLimbs, int maneVolume){
         super(age, weight, countLimbs);
         this.maneVolume = maneVolume;
     }

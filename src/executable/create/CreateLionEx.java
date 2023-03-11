@@ -2,6 +2,7 @@ package executable.create;
 
 import animals.Lion;
 import executable.CommandExecutable;
+import terminal.Command;
 import zoo.Zoo;
 
 import java.util.ArrayList;
@@ -16,10 +17,6 @@ public class CreateLionEx implements CommandExecutable {
         this.zoo = zoo;
         this.lion = new Lion(input.get(0), Integer.parseInt(input.get(1)), Integer.parseInt(input.get(2)), 4,
                 Integer.parseInt(input.get(3)));
-    }
-
-    public CreateLionEx() {
-
     }
 
 

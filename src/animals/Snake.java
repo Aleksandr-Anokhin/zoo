@@ -1,6 +1,7 @@
 package animals;
 
 public class Snake extends Animal {
+    //Class 'Snake' must either be declared abstract or implement abstract method 'compareTo(Lion)' in 'Animal'
     protected static int bodyLength;
     protected static final int MAX_WEIGHT = 100;
     protected static final String TYPE = "animals.Snake";
