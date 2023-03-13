@@ -12,8 +12,8 @@ public class CommandTypes {
     private final int args;
 
     private CommandExecutable method;
-    CommandTypes(String wolfdelete, int i, CommandExecutable method) {
-        this.title = wolfdelete;
+    CommandTypes(String liondelete, int i, CommandExecutable method) {
+        this.title = liondelete;
         this.args = i;
         this.method = method;
     }

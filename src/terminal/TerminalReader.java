@@ -3,12 +3,14 @@ package terminal;
 import executable.CommandExecutable;
 import executable.factory.CommandExecutableFactory;
 import executable.factory.CommandExecutableFactoryImpl;
+import zoo.Zoo;
 
 import java.util.Scanner;
 
 public class TerminalReader {
     private static TerminalReader terminalReader;
     private CommandParser commandParser;
+    private zoo.Zoo Zoo;
 
     private TerminalReader(CommandParser commandParser) {
 
@@ -26,8 +28,8 @@ public class TerminalReader {
             String input = scan.nextLine();
             Command commands = commandParser.parseCommand(input);
 
-            CommandExecutableFactoryImpl commandExecutableFactory = new CommandExecutableFactory();
-            // CommandExecutableFactory' is abstract; cannot be instantiated
+            CommandExecutableFactoryImpl commandExecutableFactory = new CommandExecutableFactoryImpl(Zoo);
+            // по посказке программы добавил строку: private zoo.Zoo Zoo;
             CommandExecutable commandExecutable = commandExecutableFactory.create(commands);
             commandExecutable.execute();
         }
